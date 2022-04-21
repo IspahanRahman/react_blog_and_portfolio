@@ -1,0 +1,3 @@
+exports.getBlogPageController=(req,res)=>{
+
+}

@@ -1,0 +1,12 @@
+.signup_bg--container{
+    background-image: url("../../../assets/Home/ispahan.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    border-radius: 20px;
+}
+
+.signup_form{
+    width: 90%;
+    margin:0 auto;
+}
