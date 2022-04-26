@@ -6,12 +6,12 @@ export const userSlice = createSlice({
   initialState,
   extraReducers:(builder)=>{
     builder.addMatcher(appApi.endpoints.signupUser.matchFulfilled,(state,{payload})=>{
-      console.log(user,"user signup")
-      return payload.user
+      console.log(payload,"user signup")
+      state.user=payload;
     })
 
     builder.addMatcher(appApi.endpoints.loginUser.matchFulfilled,(state,{payload})=>{
-      state.user=payload.user
+      state.user=payload
     })
   }
   

@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import {Nav,NavDropdown,Navbar,Container} from "react-bootstrap"
 import {LinkContainer} from 'react-router-bootstrap'
+import { Button} from 'react-bootstrap';
 function Blog_Navigation() {
+  const {user}=useSelector((state)=>state.user)
   return (
     <Navbar bg="light" expand="lg">
   <Container>
@@ -15,14 +18,18 @@ function Blog_Navigation() {
       <LinkContainer to='/blog/login'>
       <Nav.Link className="btn btn-primary">Login</Nav.Link>
       </LinkContainer>
-      
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+      {user && (
+        <NavDropdown title={user.email} id="basic-nav-dropdown">
+        <LinkContainer>
+        <NavDropdown.Item to="/new-article">New Article</NavDropdown.Item>
+        </LinkContainer>
+        <LinkContainer>
+          <NavDropdown.Item to="/my-articles">My Article</NavDropdown.Item>
+        </LinkContainer>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+          <NavDropdown.Item > <Button variant="outline-danger">Logout</Button></NavDropdown.Item>
         </NavDropdown>
+        )}
       </Nav>
     </Navbar.Collapse>
   </Container>
