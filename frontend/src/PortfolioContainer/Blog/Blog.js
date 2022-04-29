@@ -7,6 +7,9 @@ import Signup from './SignUp/Signup'
 import NewArticle from './NewArticle/NewArticle'
 import EditArticle from './EditArticle/EditArticle'
 import {useSelector} from "react-redux"
+import MyArticles from './MyArticles/MyArticles'
+import SingleArticle from './SingleArticlePage/SingleArticle'
+import NotFound from './NotFound'
 
 function Blog() {
   const {user}=useSelector((state)=>state.user)
@@ -23,11 +26,13 @@ function Blog() {
         )}
         (user && {
           <>
-            <Route path="/new-article" element={<NewArticle/>}/>
-            <Route path="/article/:id/edit" element={<EditArticle/>}/>
+            <Route exact path="/new-article" element={<NewArticle/>}/>
+            <Route exact path="/articles/:id/edit" element={<EditArticle/>}/>
+            <Route exact path="/articles/me" element={<MyArticles/>}/>
           </>
         })
-    
+        <Route exact path="/articles/:id" element={<SingleArticle/>}/>
+        <Route exact path="*" element={<NotFound/>}/>
         
       </Routes>
   

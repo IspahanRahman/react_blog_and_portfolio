@@ -17,7 +17,7 @@ const Userschema=new mongoose.Schema({
         required:[true,"Can't be blank"]
     },
     tokens:[],
-    articles:[]
+    articles:[{type:mongoose.Schema.Types.ObjectId,ref:'BlogPost'}]
 })
 
 Userschema.pre('save',function(next){

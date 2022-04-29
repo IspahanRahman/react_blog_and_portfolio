@@ -1,5 +1,4 @@
 const User=require('../models/User')
- 
 exports.signUpController=async (req,res)=>{
     const {email,password}=req.body
 
@@ -29,6 +28,19 @@ exports.loginController=async (req,res)=>{
 
     }
     catch(e){
+        res.status(400).json(e.message)
+    }
+}
+
+exports.logoutController=async(req,res)=>{
+    try{
+        req.user.tokens=req.user.tokens.filter((tokenObj)=>{
+            return tokenObj.token !=req.token
+        })
+        await req.user.save();
+        res.status(200).send()
+
+    }catch(e){
         res.status(400).json(e.message)
     }
 }
