@@ -31,8 +31,10 @@ function Blog() {
             <Route exact path="/articles/me" element={<MyArticles/>}/>
           </>
         })
+  
         <Route exact path="/articles/:id" element={<SingleArticle/>}/>
-        <Route exact path="*" element={<NotFound/>}/>
+        {/* <Route  path="*" element={<NotFound/>}/> */}
+    
         
       </Routes>
   

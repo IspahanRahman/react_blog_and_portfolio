@@ -4,8 +4,8 @@ exports.signUpController=async (req,res)=>{
 
     try{
         const user=await User.create({email,password})
-        await user.generateAuthToken()
-        res.status(201).json(user)
+        const token=await user.generateAuthToken()
+        res.status(201).json({user,token})
     }
     catch(e){
         let msg;
@@ -23,8 +23,8 @@ exports.loginController=async (req,res)=>{
     const {email,password}=req.body
     try{
         const user=await User.findByCredentials(email,password)
-        await user.generateAuthToken()
-        res.json(user)
+        const token=await user.generateAuthToken()
+        res.json({user,token})
 
     }
     catch(e){
@@ -35,7 +35,7 @@ exports.loginController=async (req,res)=>{
 exports.logoutController=async(req,res)=>{
     try{
         req.user.tokens=req.user.tokens.filter((tokenObj)=>{
-            return tokenObj.token !=req.token
+            return tokenObj.token !==req.token
         })
         await req.user.save();
         res.status(200).send()

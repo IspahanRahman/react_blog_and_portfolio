@@ -50,7 +50,7 @@ Userschema.methods.generateAuthToken=async function(){
     console.log(token)
     user.tokens=user.tokens.concat({token})
     await user.save()
-    return;
+    return token;
 }
 Userschema.statics.findByCredentials=async function (email,password){
     const user=await User.findOne({email})
