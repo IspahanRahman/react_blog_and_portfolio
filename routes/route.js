@@ -1,10 +1,15 @@
 const userRoute=require('./userRoutes')
+const postRoutes=require('./postsRoutes')
 
 const routes=[
     {
         path:'/user',
         handler:userRoute
     },
+    {
+        path:'/posts',
+        handler:postRoutes
+    }
   
 ]
 

@@ -35,6 +35,15 @@ export const appApi = createApi({
         url:"/user/logout",
         method:"DELETE",
       })
+    }),
+
+    //post routes
+    createPost:builder.mutation({
+      query:(article)=>({
+        url:"/posts",
+        method:"POST",
+        body:article
+      })
     })
   }),
 })
@@ -42,5 +51,5 @@ export const appApi = createApi({
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 
-export const { useSignupUserMutation,useLoginUserMutation,useLogoutUserMutation } = appApi
+export const { useSignupUserMutation,useLoginUserMutation,useLogoutUserMutation,useCreatePostMutation } = appApi
 export default appApi;
