@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import appApi from '../services/appApi'
 const initialState = {}
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   extraReducers:(builder)=>{
     builder.addMatcher(appApi.endpoints.signupUser.matchFulfilled,(state,{payload})=>{
@@ -19,7 +19,7 @@ export const userSlice = createSlice({
 
     builder.addMatcher(appApi.endpoints.logoutUser.matchFulfilled,(state)=>{
       delete state.user;
-      delete state.token
+      delete state.token;
     })
   }
   

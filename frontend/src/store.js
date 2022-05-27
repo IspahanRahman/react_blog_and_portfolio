@@ -10,7 +10,7 @@ import thunk from "redux-thunk"
 const reducers=combineReducers({
   user:userSlice,
   posts:postsSlice,
-  [appApi.reducerPath]:appApi.reducer
+  [appApi.reducerPath]:appApi.reducer,
 })
 const persistConfig={
   key:"root",
